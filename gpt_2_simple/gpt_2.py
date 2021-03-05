@@ -29,6 +29,7 @@ from gpt_2_simple.src.accumulate import AccumulatingOptimizer
 #    "TensorFlow 2.0. You'll need to use a virtualenv/cloud computer which " \
 #    "has Tensorflow 1.X on it."
 
+tf.compat.v1.disable_eager_execution()
 
 def download_file_with_progress(url_base, sub_dir, model_name, file_name):
     """General utility for incrementally downloading files from the internet
