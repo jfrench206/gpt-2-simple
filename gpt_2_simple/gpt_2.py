@@ -29,8 +29,6 @@ from gpt_2_simple.src.accumulate import AccumulatingOptimizer
 #    "TensorFlow 2.0. You'll need to use a virtualenv/cloud computer which " \
 #    "has Tensorflow 1.X on it."
 
-tf.compat.v1.disable_eager_execution()
-
 def download_file_with_progress(url_base, sub_dir, model_name, file_name):
     """General utility for incrementally downloading files from the internet
     with progress bar
@@ -99,6 +97,7 @@ def start_tf_sess(threads=-1, server=None):
     Returns a tf.Session w/ config
     """
     config = tf.compat.v1.ConfigProto()
+    tf.compat.v1.disable_eager_execution()
     config.gpu_options.allow_growth = True
     config.graph_options.rewrite_options.layout_optimizer = rewriter_config_pb2.RewriterConfig.OFF
     if threads > 0:
